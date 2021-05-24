@@ -1,4 +1,6 @@
 // https://www.javadrive.jp/tutorial/jfilechooser/index9.html
+//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFApp.java
+//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFApp
 import javax.swing.*;
 import java.io.File;
 import java.awt.BorderLayout;
@@ -7,22 +9,30 @@ import java.awt.event.*;
 public class MergePDFApp extends JFrame implements ActionListener{
 
   JLabel label;
+  JButton button = new JButton("file select");
+  JButton execButton = new JButton("exec");
 
   public static void main(String[] args){
     MergePDFApp frame = new MergePDFApp();
 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setBounds(10, 10, 300, 200);
-    frame.setTitle("タイトル");
+    frame.setTitle("Merge PDF");
     frame.setVisible(true);
   }
 
   MergePDFApp(){
-    JButton button = new JButton("file select");
+    //JButton button = new JButton("file select");
     button.addActionListener(this);
+
+    //JButton execButton = new JButton("exec");
+    execButton.addActionListener(this);
 
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(button);
+
+    JPanel execButtonPanel = new JPanel();
+    execButtonPanel.add(execButton);
 
     label = new JLabel();
 
@@ -30,18 +40,24 @@ public class MergePDFApp extends JFrame implements ActionListener{
     labelPanel.add(label);
 
     getContentPane().add(labelPanel, BorderLayout.CENTER);
-    getContentPane().add(buttonPanel, BorderLayout.PAGE_END);
+    getContentPane().add(buttonPanel, BorderLayout.LINE_START);
+    getContentPane().add(execButtonPanel, BorderLayout.PAGE_END);
   }
-
+  //ボタンを押した時に実行
   public void actionPerformed(ActionEvent e){
-    JFileChooser filechooser = new JFileChooser("/Users/kanekotakuya");
+    JFileChooser filechooser = new JFileChooser();
     filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-    int selected = filechooser.showSaveDialog(this);
-    if (selected == JFileChooser.APPROVE_OPTION){
-      File file = filechooser.getSelectedFile();
+    File file;
+    //int selected = filechooser.showSaveDialog(this);
+    Object obj = e.getSource();
+    //if (selected == JFileChooser.APPROVE_OPTION){
+    if(obj == button){
+        file = filechooser.getSelectedFile();
       label.setText(file.getAbsolutePath());
-      MergePDF.mergePDFExec(file.getAbsolutePath(),"output.pdf");
+      //MergePDF.mergePDFExec(file.getAbsolutePath(),"output.pdf");
     }
+    //if(obj == execButton){
+        
+    //}
   }
 }
