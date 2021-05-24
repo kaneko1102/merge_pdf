@@ -7,7 +7,8 @@ public class MergePDFTest extends MergePDF{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String dirName = sc.next();
-        mergePDFExec(dirName);
+        String output_file = sc.next();
+        mergePDFExec(dirName,output_file);
         sc.close();
     } 
 }
