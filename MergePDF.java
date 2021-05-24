@@ -1,4 +1,6 @@
 // ref: https://dolphinpg.net/program/java-pdfbox-merge/
+//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFApp.java
+//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFApp
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,10 +16,7 @@ import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
  
 public class MergePDF{
-    public static void mergePDF(ArrayList<String> pdfFiles) {
-     
-        //Merge後のファイル名
-        String merge_filename = "output.pdf";
+    public static void mergePDF(ArrayList<String> pdfFiles,String merge_filename) {
      
         List<InputStream> sources = new ArrayList<InputStream>();
      
@@ -40,7 +39,7 @@ public class MergePDF{
         }
     }
     // https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
-    public static void mergePDFExec(String dirName) {
+    public static void mergePDFExec(String dirName,String output_file) {
         ArrayList<String> pdfFiles = new ArrayList<String>();
         File dir = new File(dirName);
         File[] list = dir.listFiles();
@@ -51,6 +50,6 @@ public class MergePDF{
             }
         }
         Collections.sort(pdfFiles);
-        mergePDF(pdfFiles);
+        mergePDF(pdfFiles,output_file);
     }
 }
