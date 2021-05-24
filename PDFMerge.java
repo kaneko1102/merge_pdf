@@ -1,4 +1,6 @@
 // https://dolphinpg.net/program/java-pdfbox-merge/
+//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar PDFMerge.java
+//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar PDFMerge
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -7,6 +9,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
  
+// https://www.apache.org/dyn/closer.lua/pdfbox/3.0.0-RC1/pdfbox-app-3.0.0-RC1.jar
 import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
  

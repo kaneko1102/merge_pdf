@@ -3,8 +3,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class GetFileName {
-
+public class GetFileName extends MergePDF{
     public static void getFileName(String dirName) {
         ArrayList<String> pdfFiles = new ArrayList<String>();
         File dir = new File(dirName);
@@ -15,8 +14,11 @@ public class GetFileName {
             }
         }
         Collections.sort(pdfFiles);
+        mergePDF(pdfFiles);
+        /*
         for(int i = 0; i < pdfFiles.size(); i++){
             System.out.println(pdfFiles.get(i));
         }
+        */
     }
 }
