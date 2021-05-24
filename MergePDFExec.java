@@ -3,7 +3,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class GetFileName extends MergePDF{
+public class MergePDFExec extends MergePDF{
     public static void getFileName(String dirName) {
         ArrayList<String> pdfFiles = new ArrayList<String>();
         File dir = new File(dirName);
