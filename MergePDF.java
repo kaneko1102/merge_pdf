@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
  
 // https://www.apache.org/dyn/closer.lua/pdfbox/3.0.0-RC1/pdfbox-app-3.0.0-RC1.jar
 import org.apache.pdfbox.io.MemoryUsageSetting;
@@ -49,5 +50,22 @@ public class MergePDF{
         }catch(IOException e) {
             e.printStackTrace();
         }
+    }
+    public static void mergePDFExec(String dirName) {
+        ArrayList<String> pdfFiles = new ArrayList<String>();
+        File dir = new File(dirName);
+        File[] list = dir.listFiles();
+        for(int i = 0; i < list.length; i++) {
+            if(list[i].getName().contains(".pdf")) {
+                pdfFiles.add(list[i].getName());
+            }
+        }
+        Collections.sort(pdfFiles);
+        mergePDF(pdfFiles);
+        /*
+        for(int i = 0; i < pdfFiles.size(); i++){
+            System.out.println(pdfFiles.get(i));
+        }
+        */
     }
 }
