@@ -1,6 +1,5 @@
 // ref: https://dolphinpg.net/program/java-pdfbox-merge/
-//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDF.java
-//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDF
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -16,16 +15,11 @@ import org.apache.pdfbox.multipdf.PDFMergerUtility;
  
 public class MergePDF{
     public static void mergePDF(ArrayList<String> pdfFiles) {
-       
-        //Merge対象の2ファイル
-        //File file_first = new File("img001.pdf");
-        //File file_second = new File("img002.pdf");
      
         //Merge後のファイル名
         String merge_filename = "output.pdf";
      
         List<InputStream> sources = new ArrayList<InputStream>();
-        //InputStream[] is = new InputStream[pdfFiles.size()];
      
         try{
             for(int i = 0; i < pdfFiles.size(); i++){
@@ -33,12 +27,6 @@ public class MergePDF{
                 sources.add(is);
             }
             FileOutputStream mergedPDFOutputStream =  new FileOutputStream(merge_filename);
-            /*
-            for(int i = 0; i < pdfFiles.size(); i++){
-                 sources.add(is);
-            }
-            */
-            //sources.add(is1);
     
             PDFMergerUtility pdfMerger = new PDFMergerUtility();
             pdfMerger.addSources(sources);
@@ -51,21 +39,18 @@ public class MergePDF{
             e.printStackTrace();
         }
     }
+    // https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
     public static void mergePDFExec(String dirName) {
         ArrayList<String> pdfFiles = new ArrayList<String>();
         File dir = new File(dirName);
         File[] list = dir.listFiles();
+        // ディレクトリにあるpdfファイルのファイル名を取得
         for(int i = 0; i < list.length; i++) {
             if(list[i].getName().contains(".pdf")) {
-                pdfFiles.add(list[i].getName());
+                pdfFiles.add(dirName+"/"+list[i].getName());
             }
         }
         Collections.sort(pdfFiles);
         mergePDF(pdfFiles);
-        /*
-        for(int i = 0; i < pdfFiles.size(); i++){
-            System.out.println(pdfFiles.get(i));
-        }
-        */
     }
 }
