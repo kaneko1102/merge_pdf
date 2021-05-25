@@ -11,12 +11,13 @@ public class MergePDFApp extends JFrame implements ActionListener{
   JLabel label;
   JButton button = new JButton("file select");
   JButton execButton = new JButton("exec");
+  String dir;
 
   public static void main(String[] args){
     MergePDFApp frame = new MergePDFApp();
 
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setBounds(10, 10, 300, 200);
+    frame.setBounds(10, 10, 600, 200);
     frame.setTitle("Merge PDF");
     frame.setVisible(true);
   }
@@ -45,19 +46,26 @@ public class MergePDFApp extends JFrame implements ActionListener{
   }
   //ボタンを押した時に実行
   public void actionPerformed(ActionEvent e){
+    Object obj = e.getSource();
+    if(obj == button){
     JFileChooser filechooser = new JFileChooser();
     filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
     File file;
     //int selected = filechooser.showSaveDialog(this);
-    Object obj = e.getSource();
-    //if (selected == JFileChooser.APPROVE_OPTION){
-    if(obj == button){
-        file = filechooser.getSelectedFile();
-      label.setText(file.getAbsolutePath());
+    int selected = filechooser.showOpenDialog(this);
+    
+    //String cmd = e.getActionCommand();
+    
+      if (selected == JFileChooser.APPROVE_OPTION){
+      file = filechooser.getSelectedFile();
+      dir = file.getAbsolutePath();
+      label.setText(dir);
       //MergePDF.mergePDFExec(file.getAbsolutePath(),"output.pdf");
+      }
     }
-    //if(obj == execButton){
-        
-    //}
+    if(obj == execButton){
+      label.setText("実行"+dir);
+      //MergePDF.mergePDFExec(dir,"output.pdf");
+    }
   }
 }
