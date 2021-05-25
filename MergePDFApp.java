@@ -48,19 +48,19 @@ public class MergePDFApp extends JFrame implements ActionListener{
   public void actionPerformed(ActionEvent e){
     Object obj = e.getSource();
     if(obj == button){
-    JFileChooser filechooser = new JFileChooser();
-    filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-    File file;
-    //int selected = filechooser.showSaveDialog(this);
-    int selected = filechooser.showOpenDialog(this);
+      JFileChooser filechooser = new JFileChooser();
+      filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+      File file;
+      //int selected = filechooser.showSaveDialog(this);
+      int selected = filechooser.showOpenDialog(this);
     
-    //String cmd = e.getActionCommand();
+      //String cmd = e.getActionCommand();
     
       if (selected == JFileChooser.APPROVE_OPTION){
-      file = filechooser.getSelectedFile();
-      dir = file.getAbsolutePath();
-      label.setText(dir);
-      //MergePDF.mergePDFExec(file.getAbsolutePath(),"output.pdf");
+        file = filechooser.getSelectedFile();
+        dir = file.getAbsolutePath();
+        label.setText(dir);
+        //MergePDF.mergePDFExec(file.getAbsolutePath(),"output.pdf");
       }
     }
     if(obj == execButton){
