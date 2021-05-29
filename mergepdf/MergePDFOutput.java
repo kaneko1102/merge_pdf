@@ -9,24 +9,26 @@ import java.awt.Container;
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.*;
+import java.io.File;
 
-class FileNameForm extends JFrame implements ActionListener{
+class MergePDFOutput extends JFrame implements ActionListener{
   JLabel label;
   JTextField text;
-
-  public static void main(String args[]){
+  String outputFile;
+  //public static void main(String args[]){
     
-    FileNameForm frame = new FileNameForm("MyTitle");
-    frame.setVisible(true);
-  }
+  //  FileNameForm frame = new FileNameForm("MyTitle");
+  //  frame.setVisible(true);
+  //}
 
-  FileNameForm(String title){
+  MergePDFOutput(String title){
     setTitle(title);
     setBounds(100, 100, 500, 100);
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
     text = new JTextField(20);
-    JButton button = new JButton("Get");
+    JButton button = new JButton("output");
     button.addActionListener(this);
 
     JPanel p = new JPanel();
@@ -38,9 +40,16 @@ class FileNameForm extends JFrame implements ActionListener{
     Container contentPane = getContentPane();
     contentPane.add(p, BorderLayout.CENTER);
     contentPane.add(label, BorderLayout.SOUTH);
+    
   }
 
   public void actionPerformed(ActionEvent e){
     label.setText(text.getText());
+    outputFile = text.getText();
+    text.setText(outputFile);
+    //JFileChooser filechooser = new JFileChooser();
+    //filechooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+    //File file;
+    //int selected = filechooser.showSaveDialog(this);
   }
 }
