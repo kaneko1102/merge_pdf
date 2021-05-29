@@ -1,5 +1,6 @@
-//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFTest.java
-//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFTest
+package mergepdf;
+//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf/MergePDFTest.java
+//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFTest
 
 import java.util.Scanner;
 

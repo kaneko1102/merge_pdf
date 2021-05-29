@@ -1,3 +1,4 @@
+package mergepdf;
 // ref: https://dolphinpg.net/program/java-pdfbox-merge/
 
 import java.io.File;

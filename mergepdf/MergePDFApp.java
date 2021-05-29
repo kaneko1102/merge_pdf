@@ -1,6 +1,7 @@
+package mergepdf;
 // https://www.javadrive.jp/tutorial/jfilechooser/index9.html
-//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFApp.java
-//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar MergePDFApp
+//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf/MergePDFApp.java
+//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
 import javax.swing.*;
 import java.io.File;
 import java.awt.BorderLayout;
