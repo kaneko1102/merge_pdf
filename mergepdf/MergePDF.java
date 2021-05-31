@@ -38,7 +38,7 @@ public class MergePDF{
     }
   }
   //参考: https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
-  public static void mergePDFExec(String dirName,String output_file) {
+  public static void mergePDFExec(String dirName,String outputFile) {
     ArrayList<String> pdfFiles = new ArrayList<String>();
     File dir = new File(dirName);
     File[] list = dir.listFiles();
@@ -51,6 +51,6 @@ public class MergePDF{
     // ファイル名を辞書順に並び替え
     Collections.sort(pdfFiles);
     // ファイル結合
-    mergePDF(pdfFiles,output_file);
+    mergePDF(pdfFiles,outputFile);
   }
 }
