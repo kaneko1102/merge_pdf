@@ -8,10 +8,9 @@ import java.awt.BorderLayout;
 import java.awt.event.*;
 
 public class MergePDFApp extends JFrame implements ActionListener{
-//public class MergePDFApp extends FileNameForm{
   JLabel label;
-  JButton button;// = new JButton("folder select");
-  JButton execButton;// = new JButton("exec");
+  JButton button;
+  JButton execButton;
   String dir;
   JTextField inputDirText;
 
@@ -57,27 +56,30 @@ public class MergePDFApp extends JFrame implements ActionListener{
     if(obj == button){
       JFileChooser filechooser = new JFileChooser();
       filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-      //filechooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
       File file;
-      //int selected = filechooser.showSaveDialog(this);
       int selected = filechooser.showOpenDialog(this);
-    
-      //String cmd = e.getActionCommand();
     
       if (selected == JFileChooser.APPROVE_OPTION){
         file = filechooser.getSelectedFile();
         dir = file.getAbsolutePath();
-        //label.setText(dir);
         inputDirText.setText(dir);
-        //MergePDF.mergePDFExec(file.getAbsolutePath(),"output.pdf");
       }
     }
     if(obj == execButton){
-      //label.setText("実行"+dir);
-      System.out.println(dir);
-      MergePDFOutput frame = new MergePDFOutput("test");
-      frame.setVisible(true);
-      //MergePDF.mergePDFExec(dir,"output.pdf");
+      JFileChooser saveFilechooser = new JFileChooser();
+      //filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+      int selected = saveFilechooser.showSaveDialog(this);
+      File file;
+      if (selected == JFileChooser.APPROVE_OPTION){
+        file = saveFilechooser.getSelectedFile();
+        String outputPDFFile = file.getAbsolutePath();
+        //System.out.println(outputPDFFile);
+        MergePDF.mergePDFExec(dir,outputPDFFile);
+        //outputDirText.setText(file.getAbsolutePath());
+      }
+      //System.out.println(dir);
+      //MergePDFOutput frame = new MergePDFOutput("test",dir);
+      //frame.setVisible(true);
     }
   }
 }
