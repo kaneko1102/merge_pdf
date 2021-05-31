@@ -1,0 +1,2 @@
+Main-Class: mergepdf.MergePDFApp
+Class-Path: pdfbox-app-3.0.0-RC1.jar 
