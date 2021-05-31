@@ -1,6 +1,10 @@
 package mergepdf;
 //コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf/MergePDFApp.java
 //実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
+//マニフェストの作成コマンド
+//jar -cvf mergepdf.jar mergepdf/*.class
+//jarファイルの実行コマンド
+//java -jar mergepdf.jar
 import javax.swing.*;
 import java.io.File;
 import java.awt.BorderLayout;
@@ -42,7 +46,7 @@ public class MergePDFApp extends JFrame implements ActionListener{
     getContentPane().add(execButtonPanel, BorderLayout.PAGE_END);
     getContentPane().add(dirText, BorderLayout.LINE_START);
   }
-  
+
   //ボタンを押した時に実行
   public void actionPerformed(ActionEvent e){
     Object obj = e.getSource();
