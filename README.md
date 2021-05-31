@@ -29,5 +29,9 @@ java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
 jarファイルを作成する場合は次のコマンドを入力する。
 ```
 jar -cvf mergepdf.jar mergepdf/*.class
+jar -uvfm mergepdf.jar manifest.mf
+```
+実行
+```
 java -jar mergepdf.jar
 ```
