@@ -9,10 +9,10 @@ import java.awt.event.*;
 
 public class MergePDFApp extends JFrame implements ActionListener{
   JLabel label;
-  JButton button;
-  JButton execButton;
-  String dir;
-  JTextField inputDirText;
+  JButton selectButton; // フォルダ選択のボタン
+  JButton execButton; // 実行ボタン
+  String dir; //読み込むディレクトリ
+  JTextField inputDirText; //読み込むディレクトリのテキストフィールド
 
   public static void main(String[] args){
     MergePDFApp frame = new MergePDFApp();
@@ -28,14 +28,14 @@ public class MergePDFApp extends JFrame implements ActionListener{
     JPanel dirText = new JPanel();
     dirText.add(inputDirText);
 
-    button = new JButton("folder select");
-    button.addActionListener(this);
+    selectButton = new JButton("フォルダを選択");
+    selectButton.addActionListener(this);
 
-    execButton = new JButton("exec");
+    execButton = new JButton("実行");
     execButton.addActionListener(this);
 
     JPanel buttonPanel = new JPanel();
-    buttonPanel.add(button);
+    buttonPanel.add(selectButton);
 
     JPanel execButtonPanel = new JPanel();
     execButtonPanel.add(execButton);
@@ -53,7 +53,8 @@ public class MergePDFApp extends JFrame implements ActionListener{
   //ボタンを押した時に実行
   public void actionPerformed(ActionEvent e){
     Object obj = e.getSource();
-    if(obj == button){
+    // フォルダ選択ボタンを押したとき
+    if(obj == selectButton){
       JFileChooser filechooser = new JFileChooser();
       filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
       File file;
@@ -65,14 +66,17 @@ public class MergePDFApp extends JFrame implements ActionListener{
         inputDirText.setText(dir);
       }
     }
+    // 実行ボタンを押したとき
     if(obj == execButton){
+      dir = inputDirText.getText();
       JFileChooser saveFilechooser = new JFileChooser(dir);
       int selected = saveFilechooser.showSaveDialog(this);
       File file;
       if (selected == JFileChooser.APPROVE_OPTION){
         file = saveFilechooser.getSelectedFile();
         String outputPDFFile = file.getAbsolutePath();
-        MergePDF.mergePDFExec(dir,outputPDFFile);
+        //MergePDF.mergePDFExec(dir,outputPDFFile); // pdfを結合
+        System.out.println(dir);
         JOptionPane.showMessageDialog(this, "完了");
       }
     }

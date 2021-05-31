@@ -15,27 +15,29 @@ import org.apache.pdfbox.io.MemoryUsageSetting;
 import org.apache.pdfbox.multipdf.PDFMergerUtility;
  
 public class MergePDF{
-  public static void mergePDF(ArrayList<String> pdfFiles,String merge_filename) {   
+  // pdfファイルの結合
+  public static void mergePDF(ArrayList<String> pdfFiles,String mergeFileName) {   
     List<InputStream> sources = new ArrayList<InputStream>();
-    // ディレクトリにあるPDFファイルを一つずつ読み込む
+    
     try{
+      // ディレクトリにあるPDFファイルを一つずつ読み込む
       for(int i = 0; i < pdfFiles.size(); i++){
         InputStream is = new FileInputStream(pdfFiles.get(i));
         sources.add(is);
       }
-      FileOutputStream mergedPDFOutputStream =  new FileOutputStream(merge_filename);
+      FileOutputStream mergedPDFOutputStream =  new FileOutputStream(mergeFileName);
     
       PDFMergerUtility pdfMerger = new PDFMergerUtility();
       pdfMerger.addSources(sources);
       pdfMerger.setDestinationStream(mergedPDFOutputStream);
-      //PDFのMerge出力
+      //PDFをMergeして出力
       pdfMerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
     }
     catch(IOException e) {
       e.printStackTrace();
     }
   }
-  // ref: https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
+  //参考: https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
   public static void mergePDFExec(String dirName,String output_file) {
     ArrayList<String> pdfFiles = new ArrayList<String>();
     File dir = new File(dirName);
