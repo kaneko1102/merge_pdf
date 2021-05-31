@@ -66,20 +66,15 @@ public class MergePDFApp extends JFrame implements ActionListener{
       }
     }
     if(obj == execButton){
-      JFileChooser saveFilechooser = new JFileChooser();
-      //filechooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+      JFileChooser saveFilechooser = new JFileChooser(dir);
       int selected = saveFilechooser.showSaveDialog(this);
       File file;
       if (selected == JFileChooser.APPROVE_OPTION){
         file = saveFilechooser.getSelectedFile();
         String outputPDFFile = file.getAbsolutePath();
-        //System.out.println(outputPDFFile);
         MergePDF.mergePDFExec(dir,outputPDFFile);
-        //outputDirText.setText(file.getAbsolutePath());
+        JOptionPane.showMessageDialog(this, "完了");
       }
-      //System.out.println(dir);
-      //MergePDFOutput frame = new MergePDFOutput("test",dir);
-      //frame.setVisible(true);
     }
   }
 }
