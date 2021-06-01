@@ -17,18 +17,18 @@ public class MergePDF{
   // pdfFilesに格納されているファイル名のpdfファイルを結合し、ファイル名をmergeFileNameで指定した名前で出力
   // 参考: https://dolphinpg.net/program/java-pdfbox-merge/
   public static void mergePDF(ArrayList<String> pdfFiles,String mergeFileName) {   
-    List<InputStream> sources = new ArrayList<InputStream>();
+    List<InputStream> pdfSources = new ArrayList<InputStream>();
     
     try{
       // ディレクトリにあるPDFファイルを一つずつ読み込む
       for(int i = 0; i < pdfFiles.size(); i++){
         InputStream is = new FileInputStream(pdfFiles.get(i));
-        sources.add(is);
+        pdfSources.add(is);
       }
       FileOutputStream mergedPDFOutputStream =  new FileOutputStream(mergeFileName);
     
       PDFMergerUtility pdfMerger = new PDFMergerUtility();
-      pdfMerger.addSources(sources);
+      pdfMerger.addSources(pdfSources);
       pdfMerger.setDestinationStream(mergedPDFOutputStream);
       //PDFをMergeして出力
       pdfMerger.mergeDocuments(MemoryUsageSetting.setupMainMemoryOnly());
@@ -37,16 +37,16 @@ public class MergePDF{
       e.printStackTrace();
     }
   }
-  // dirNameで指定したディレクトリにあるpdfファイルのファイル名を取得しoutputFileで指定したファイル名で出力
+  // inputDirNameで指定したディレクトリにあるpdfファイルのファイル名を取得しoutputFileで指定したファイル名で出力
   //参考: https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
-  public static void mergePDFExec(String dirName,String outputFile) {
+  public static void mergePDFExec(String inputDirName,String outputFile) {
     ArrayList<String> pdfFiles = new ArrayList<String>();
-    File dir = new File(dirName);
-    File[] list = dir.listFiles();
+    File inputDir = new File(inputDirName);
+    File[] dirFiles = inputDir.listFiles();
     // ディレクトリにあるpdfファイルのファイル名を取得
-    for(int i = 0; i < list.length; i++) {
-      if(list[i].getName().contains(".pdf")) {
-        pdfFiles.add(dirName+"/"+list[i].getName());
+    for(int i = 0; i < dirFiles.length; i++) {
+      if(dirFiles[i].getName().contains(".pdf")) {
+        pdfFiles.add(inputDirName+"/"+dirFiles[i].getName());
       }
     }
     // ファイル名を辞書順に並び替え
