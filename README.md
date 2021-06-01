@@ -14,13 +14,27 @@
 [https://www.apache.org/dyn/closer.lua/pdfbox/3.0.0-RC1/pdfbox-app-3.0.0-RC1.jar](https://www.apache.org/dyn/closer.lua/pdfbox/3.0.0-RC1/pdfbox-app-3.0.0-RC1.jar)からjarファイルをダウンロードする。
 ### コンパイル
 クラスパスを指定してコンパイルする。jarファイルを、このREADME.mdと同じディレクトリに配置した場合は次のコマンドを入力する。
+
+mac
 ```
 javac -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf/MergePDFApp.java
 ```
+
+windows
+```
+javac -classpath .;pdfbox-app-3.0.0-RC1.jar -encoding utf-8 mergepdf/MergePDFApp.java
+```
 ### 実行
 クラスパスを指定して実行する
+
+mac
 ```
 java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
+```
+
+windows
+```
+java -classpath .;pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
 ```
 
 ### jarファイルの作成
