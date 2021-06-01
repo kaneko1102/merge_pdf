@@ -8,8 +8,6 @@
   - PDFを結合するクラス
 - MergePDFApp.java
   - PDFを結合するGUIのフレーム
-- MergePDFTest.java
-  - 実行ファイルと同じディレクトリにあるpdfを結合
 
 ## 実行方法
 ### ライブラリのダウンロード
