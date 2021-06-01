@@ -1,7 +1,7 @@
 package mergepdf;
 //コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf/MergePDFApp.java
 //実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
-//マニフェストの作成コマンド
+//jarファイルの作成コマンド
 //jar -cvf mergepdf.jar mergepdf/*.class
 //jar -uvfm mergepdf.jar manifest.mf
 //jarファイルの実行コマンド

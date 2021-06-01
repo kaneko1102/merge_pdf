@@ -7,7 +7,7 @@
 - MergePDF.java
   - PDFを結合するクラス
 - MergePDFApp.java
-  - PDFを結合するGUIのフレーム
+  - PDFを結合するGUI
 
 ## 実行方法
 ### ライブラリのダウンロード
