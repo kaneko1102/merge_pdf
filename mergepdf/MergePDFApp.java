@@ -1,11 +1,5 @@
 package mergepdf;
-//コンパイルコマンド javac -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf/MergePDFApp.java
-//実行コマンド java -classpath .:pdfbox-app-3.0.0-RC1.jar mergepdf.MergePDFApp
-//jarファイルの作成コマンド
-//jar -cvf mergepdf.jar mergepdf/*.class
-//jar -uvfm mergepdf.jar manifest.mf
-//jarファイルの実行コマンド
-//java -jar mergepdf.jar
+
 import javax.swing.*;
 import java.io.File;
 import java.awt.BorderLayout;
