@@ -41,11 +41,14 @@ public class MergePDF{
   //参考: https://qiita.com/tedkuma/items/4d0f66443b1cefdd2392
   public static void mergePDFExec(String inputDirName,String outputFile) {
     ArrayList<String> pdfFiles = new ArrayList<String>();
+    inputDirName = inputDirName.replace("\\","/");
     File inputDir = new File(inputDirName);
+    
     File[] dirFiles = inputDir.listFiles();
     // ディレクトリにあるpdfファイルのファイル名を取得
     for(int i = 0; i < dirFiles.length; i++) {
-      if(dirFiles[i].getName().contains(".pdf")) {
+      if(dirFiles[i].getName().contains(".pdf")||dirFiles[i].getName().contains(".PDF")) {
+        
         pdfFiles.add(inputDirName+"/"+dirFiles[i].getName());
       }
     }
